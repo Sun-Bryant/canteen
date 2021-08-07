@@ -3,9 +3,11 @@ package com.icbc.canteen;
 
 
 import com.icbc.canteen.dao.ConsumptionDao;
+import com.icbc.canteen.dao.DelayedDiningDao;
 import com.icbc.canteen.dao.ProductionDayDao;
 import com.icbc.canteen.dao.UserDao;
 import com.icbc.canteen.entity.Consumption;
+import com.icbc.canteen.entity.DelayedDining;
 import com.icbc.canteen.entity.ProductionDay;
 import com.icbc.canteen.entity.User;
 import com.icbc.canteen.util.CantennUtil;
@@ -32,6 +34,9 @@ public class MapperTests {
 
     @Autowired
     private ProductionDayDao productionDayDao;
+
+    @Autowired
+    private DelayedDiningDao delayedDiningDao;
 
     /**
      * 测试UserDao的selectById方法。
@@ -125,5 +130,20 @@ public class MapperTests {
     }
 
 
+    /**
+     * 测试DelayedDiningDao的insertDelayedDining方法。
+     */
+    @Test
+    public void testInsertDelayedDining() {
+        DelayedDining delayedDining = new DelayedDining();
+        delayedDining.setUserId(1);
+        delayedDining.setDelayDate(new Date());
+        delayedDining.setDinerNum("10-15人");
+        delayedDining.setDinerStandard(40);
+        delayedDining.setComment("无");
+        delayedDining.setCreateTime(new Date());
+
+        System.out.println(delayedDiningDao.insertDelayedDining(delayedDining));
+    }
 
 }
