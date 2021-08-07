@@ -3,8 +3,10 @@ package com.icbc.canteen;
 
 
 import com.icbc.canteen.dao.ConsumptionDao;
+import com.icbc.canteen.dao.ProductionDayDao;
 import com.icbc.canteen.dao.UserDao;
 import com.icbc.canteen.entity.Consumption;
+import com.icbc.canteen.entity.ProductionDay;
 import com.icbc.canteen.entity.User;
 import com.icbc.canteen.util.CantennUtil;
 import org.junit.Test;
@@ -16,7 +18,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -28,6 +29,9 @@ public class MapperTests {
 
     @Autowired
     private ConsumptionDao consumptionDao;
+
+    @Autowired
+    private ProductionDayDao productionDayDao;
 
     /**
      * 测试UserDao的selectById方法。
@@ -101,6 +105,23 @@ public class MapperTests {
     @Test
     public void testUpdateScore() {
         System.out.println(consumptionDao.updateScore(1,2));
+    }
+
+    /**
+     * 测试ProductionDayDao的insertProductionDay方法。
+     */
+    @Test
+    public void testInsertProductionDay() {
+        ProductionDay productionDay = new ProductionDay();
+        productionDay.setUserId(2);
+        productionDay.setProductionDate(new Date());
+        productionDay.setBreakfastStandrad(5);
+        productionDay.setBreakfastStandrad(40);
+        productionDay.setDinnerStandrad(40);
+        productionDay.setComment("暂无");
+        productionDay.setCreateTime(new Date());
+
+        System.out.println(productionDayDao.insertProductionDay(productionDay));
     }
 
 
