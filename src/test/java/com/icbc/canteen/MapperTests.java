@@ -33,7 +33,13 @@ public class MapperTests {
     private DelayedDiningDao delayedDiningDao;
 
     @Autowired
+    private FeedbackDao feedbackDao;
+
+    @Autowired
     private LostDao lostDao;
+
+    @Autowired
+    private RealTimeDinersDao realTimeDinersDao;
 
     /**
      * 测试UserDao的selectById方法。
@@ -159,7 +165,7 @@ public class MapperTests {
 //        lost.setStatus(0);
 //        lost.setCreateTime(new Date());
 
-        //赵玲
+        //招领
         Lost lost = new Lost();
         lost.setUserId(1);
         lost.setTitle("猫咪寻主");
@@ -179,6 +185,31 @@ public class MapperTests {
     @Test
     public void selectLost() {
         System.out.println(lostDao.selectLosts());
+    }
+
+    /**
+     * 测试FeedbackDao的insertFeedback方法。
+     */
+    @Test
+    public void insertFeedback() {
+        Feedback feedback = new Feedback();
+        feedback.setUserId(1);
+        feedback.setFoodType(3);
+        feedback.setFoodTaste(3);
+        feedback.setSanitation(3);
+        feedback.setServiceAttitude(3);
+        feedback.setComment("无");
+        feedback.setCreateTime(new Date());
+
+        System.out.println(feedbackDao.insertFeedback(feedback));
+    }
+
+    /**
+     * 测试RealTimeDinersDao的selectRealTimeDiners方法。
+     */
+    @Test
+    public void selectRealTimeDiners() {
+        System.out.println(realTimeDinersDao.selectRealTimeDiners());
     }
 
 }
