@@ -44,6 +44,12 @@ public class MapperTests {
     @Autowired
     private ChefDao chefDao;
 
+    @Autowired
+    private DailyDietDao dailyDietDao;
+
+    @Autowired
+    private ReserveDao reserveDao;
+
     /**
      * 测试UserDao的selectById方法。
      */
@@ -97,6 +103,14 @@ public class MapperTests {
     @Test
     public void testUpdateType() {
         System.out.println(userDao.updateType(1, 1));
+    }
+
+    /**
+     * 测试UserDao的updateAccount方法。
+     */
+    @Test
+    public void testUpdateAccount() {
+        System.out.println(userDao.updateAccount(1,6));
     }
 
 
@@ -221,6 +235,37 @@ public class MapperTests {
     @Test
     public void selectChefs() {
         System.out.println(chefDao.selectChefs());
+    }
+
+    /**
+     * 测试DailyDietDao的selectDailyDiet方法。
+     */
+    @Test
+    public void selectDailyDiet() {
+        System.out.println(dailyDietDao.selectDailyDiet());
+    }
+
+    /**
+     * 测试DailyDietDao的updateStock方法。
+     */
+    @Test
+    public void updateStock() {
+
+        System.out.println(dailyDietDao.updateStock("番茄炒蛋",1));
+    }
+
+
+    /**
+     * 测试OrderDao的insertOrder方法。
+     */
+    @Test
+    public void insertOrder() {
+        Reserve reserve = new Reserve();
+        reserve.setUserId(1);
+        reserve.setFoodName("番茄炒蛋");
+        reserve.setFoodNum(1);
+        reserve.setCreateTime(new Date());
+        System.out.println(reserveDao.insertReserve(reserve));
     }
 
 }

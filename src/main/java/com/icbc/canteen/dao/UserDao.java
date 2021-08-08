@@ -27,4 +27,7 @@ public interface UserDao {
 
     @Update({"update " + TABLE_NAME + " set type=#{type} where id=#{id}"})
     int updateType(@Param("id")int id, @Param("type")int type);
+
+    @Update({"update " + TABLE_NAME + " set account= account - #{price} where id=#{id}"})
+    int updateAccount(@Param("id")int id, @Param("price")double price);
 }
