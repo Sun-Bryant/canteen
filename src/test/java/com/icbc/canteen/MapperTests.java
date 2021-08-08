@@ -2,14 +2,8 @@ package com.icbc.canteen;
 
 
 
-import com.icbc.canteen.dao.ConsumptionDao;
-import com.icbc.canteen.dao.DelayedDiningDao;
-import com.icbc.canteen.dao.ProductionDayDao;
-import com.icbc.canteen.dao.UserDao;
-import com.icbc.canteen.entity.Consumption;
-import com.icbc.canteen.entity.DelayedDining;
-import com.icbc.canteen.entity.ProductionDay;
-import com.icbc.canteen.entity.User;
+import com.icbc.canteen.dao.*;
+import com.icbc.canteen.entity.*;
 import com.icbc.canteen.util.CantennUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -37,6 +31,9 @@ public class MapperTests {
 
     @Autowired
     private DelayedDiningDao delayedDiningDao;
+
+    @Autowired
+    private LostDao lostDao;
 
     /**
      * 测试UserDao的selectById方法。
@@ -144,6 +141,44 @@ public class MapperTests {
         delayedDining.setCreateTime(new Date());
 
         System.out.println(delayedDiningDao.insertDelayedDining(delayedDining));
+    }
+
+    /**
+     * 测试LostDao的insertLost方法。
+     */
+    @Test
+    public void insertLost() {
+        //失物
+//        Lost lost = new Lost();
+//        lost.setUserId(1);
+//        lost.setTitle("寻找猫咪");
+//        lost.setContent("2021年8月1日，本人丢失了养了三年的小猫咪，如图，如果有看到的麻烦联系我，必有重谢，手机号：13720991624");
+//        lost.setPhone("13720991624");
+//        lost.setImgUrl("/Users/syd/Desktop/canteen/img/header.jpg");
+//        lost.setType(0);
+//        lost.setStatus(0);
+//        lost.setCreateTime(new Date());
+
+        //赵玲
+        Lost lost = new Lost();
+        lost.setUserId(1);
+        lost.setTitle("猫咪寻主");
+        lost.setContent("2021年8月1日，本人在公司路边看到一只小猫咪，如图，如果主人看到的麻烦联系我，手机号：13720991624");
+        lost.setPhone("13720991624");
+        lost.setImgUrl("/Users/syd/Desktop/canteen/img/header.jpg");
+        lost.setType(1);
+        lost.setStatus(0);
+        lost.setCreateTime(new Date());
+
+        System.out.println(lostDao.insertLost(lost));
+    }
+
+    /**
+     * 测试LostDao的selectLost方法。
+     */
+    @Test
+    public void selectLost() {
+        System.out.println(lostDao.selectLosts());
     }
 
 }
