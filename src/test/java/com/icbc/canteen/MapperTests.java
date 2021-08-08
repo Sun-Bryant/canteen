@@ -41,6 +41,9 @@ public class MapperTests {
     @Autowired
     private RealTimeDinersDao realTimeDinersDao;
 
+    @Autowired
+    private ChefDao chefDao;
+
     /**
      * 测试UserDao的selectById方法。
      */
@@ -210,6 +213,14 @@ public class MapperTests {
     @Test
     public void selectRealTimeDiners() {
         System.out.println(realTimeDinersDao.selectRealTimeDiners());
+    }
+
+    /**
+     * 测试ChefDao的selectChefs方法。
+     */
+    @Test
+    public void selectChefs() {
+        System.out.println(chefDao.selectChefs());
     }
 
 }
