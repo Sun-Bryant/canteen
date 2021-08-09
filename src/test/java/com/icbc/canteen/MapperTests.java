@@ -66,7 +66,7 @@ public class MapperTests {
     @Test
     public void testInsertUser() {
         User user = new User();
-        user.setUsername("aaa");
+        user.setUsername("11111");
         user.setSalt(CantennUtil.generateUUID().substring(0, 5));
         user.setPassword(CantennUtil.md5(user.getPassword() + user.getSalt()));
         user.setType(0);
@@ -83,7 +83,7 @@ public class MapperTests {
      */
     @Test
     public void testSelectByName() {
-        User user = userDao.selectByName("aaa");
+        User user = userDao.selectByName("hhh");
 
         System.out.println(user);
     }
